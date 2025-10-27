@@ -1,0 +1,462 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Open+Sans:wght@300;400;600&display=swap');
+
+:root {
+  --primary: #0ff;
+  --bg: #0a0a0a;
+  --text: #eee;
+  --blur-time: 1.2s;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Open Sans', sans-serif;
+  margin: 0;
+  overflow-x: hidden;
+}
+
+header, footer {
+  text-align: center;
+  padding: 1rem;
+}
+
+/* Contact/socials in header */
+footer .contact {
+  margin-top: 0.6rem;
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+footer .contact .socials {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+footer .contact .socials a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  background: rgba(255,255,255,0.02);
+  border: 1px solid rgba(255,255,255,0.03);
+  text-decoration: none;
+}
+
+footer .contact .socials a svg {
+  width: 18px;
+  height: 18px;
+  fill: #fff; /* changed from var(--text) to pure white */
+  transition: transform 0.15s ease, fill 0.15s ease;
+}
+
+footer .contact .socials a:hover svg {
+  fill: var(--primary);
+  transform: scale(1.06);
+}
+
+footer .contact .email a {
+  color: var(--text);
+  text-decoration: none;
+  padding: 0.35rem 0.6rem;
+  border-radius: 0.5rem;
+  background: rgba(255,255,255,0.02);
+  border: 1px solid rgba(255,255,255,0.03);
+  font-weight: 600;
+}
+
+footer .contact .email a:hover {
+  color: var(--primary);
+  border-color: rgba(0,255,255,0.12);
+}
+
+/* Small screen tweaks to keep footer compact */
+@media (max-width: 520px) {
+  footer .contact {
+    gap: 0.5rem;
+  }
+  footer .contact .socials a {
+    width: 34px;
+    height: 34px;
+  }
+}
+
+h1 {
+  font-family: 'Orbitron', sans-serif;
+  color: var(--primary);
+  letter-spacing: 2px;
+}
+.project-list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;             /* same gap you used previously */
+  padding: 2rem;
+  align-items: stretch;  /* make children equal height */
+  justify-items: stretch;
+  width: calc(100% - 4rem); /* keep some outer padding */
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+/* Make each card roughly 1/3 of width minus gaps/padding */
+.project-card {
+  background: #111;
+  border-radius: 1rem;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  padding: 1.25rem;
+  box-sizing: border-box;
+
+  /* OUTLINE as requested */
+  outline: 1px solid rgba(0, 255, 255, 0.12);
+  border: 1px solid rgba(0, 255, 255, 0.06);
+}
+
+/* Hover effect preserved */
+.project-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 10px 20px rgba(0,255,255,0.12);
+}
+
+/* Hide images (you said remove background images) */
+.project-card img {
+  display: none;
+}
+
+/* card-content contains title + paragraph (stacked tightly) */
+.card-content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem; /* small gap between title and paragraph */
+  flex: 1 1 auto; /* consume available vertical space so badge sits nicely */
+}
+
+/* Title styling — keep Orbitron, neon color, tightened spacing */
+.card-content h2 {
+  margin: 0;
+  font-family: 'Orbitron', sans-serif;
+  font-weight: 700;
+  color: var(--primary);
+  letter-spacing: 1px;
+  font-size: 1.1rem;
+}
+
+/* Paragraph above the badge */
+.card-content p {
+  margin: 0;
+  color: var(--text);
+  font-family: 'Open Sans', sans-serif;
+  font-size: 0.95rem;
+  line-height: 1.35;
+  opacity: 0.9;
+}
+
+/* Badge sits in the bottom-right corner of the card */
+.badge {
+  position: absolute;
+  right: 1rem;
+  bottom: 1rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.35rem 0.6rem;
+  border-radius: 0.75rem;
+  background: rgba(0,255,255,0.08);
+  border: 1px solid rgba(0,255,255,0.22);
+  color: var(--primary);
+  text-decoration: none;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 600;
+  font-size: 0.85rem;
+  transition: background 0.18s ease, transform 0.18s ease;
+  z-index: 4;
+}
+
+/* Slight pop on hover */
+.project-card:hover .badge {
+  background: rgba(0,255,255,0.16);
+  transform: translateY(-2px);
+}
+
+/* Ensure consistent card height (so text lengths don't break layout) */
+.project-card {
+  min-height: 260px;  /* adjust up/down to taste; keeps equal visual height */
+}
+
+/* Responsive fallback: stack on small screens */
+@media (max-width: 880px) {
+  .project-list {
+    grid-template-columns: 1fr; /* switch to single column for narrow screens */
+    width: calc(100% - 2rem);
+  }
+  .project-card {
+    min-height: auto;
+  }
+}
+
+/* Slideshow Styles */
+.slideshow {
+  position: relative;
+  height: 100vh;
+  overflow: hidden;
+}
+.slide {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  /* background-image: var(--img); */
+  background-size: cover;
+  background-position: center;
+  opacity: 0;
+  transform: translate(-10%, 10%) skew(-10deg);
+  filter: blur(8px);
+  transition: opacity var(--blur-time) ease, filter var(--blur-time) ease, transform 1s ease;
+}
+.slide.active {
+  opacity: 1;
+  filter: blur(0);
+  transform: translate(0,0) skew(0);
+  z-index: 2;
+}
+.text-block {
+  position: absolute;
+  bottom: 10%;
+  left: 10%;
+  background: rgba(0,0,0,0.5);
+  padding: 1.5rem 2rem;
+  border-left: 4px solid var(--primary);
+  backdrop-filter: blur(4px);
+}
+.text-block h2 {
+  color: var(--primary);
+  font-family: 'Orbitron', sans-serif;
+  margin-bottom: 0.5rem;
+}
+
+/* Rhombus remnants */
+.rhombus-trails {
+  position: absolute;
+  bottom: 1rem;
+  right: 1rem;
+  display: flex;
+  gap: 0.5rem;
+  z-index: 5;
+}
+.rhombus-trails div {
+  width: 60px;
+  height: 60px;
+  transform: rotate(45deg);
+  background-size: cover;
+  background-position: center;
+  cursor: pointer;
+  filter: blur(2px) brightness(0.7);
+  transition: all 0.35s cubic-bezier(.2,.8,.2,1);
+  border: 2px solid rgba(255,255,255,0.2);
+}
+.rhombus-trails div:hover {
+  filter: blur(0) brightness(1);
+  transform: rotate(45deg) scale(1.1);
+}
+
+/* Thumb specific styles */
+.rhombus-trails .thumb {
+  width: 60px;
+  height: 60px;
+  transform: rotate(45deg);
+  background-size: cover;
+  background-position: center;
+  cursor: pointer;
+  filter: blur(2px) brightness(0.7);
+  transition: filter 0.35s ease, transform 0.35s ease, box-shadow 0.35s ease;
+  border: 2px solid rgba(255,255,255,0.12);
+}
+
+/* Active thumb: remove blur and add subtle outline/glow */
+.rhombus-trails .active-thumb {
+  filter: blur(0) brightness(1.05);
+  box-shadow: 0 6px 18px rgba(0,255,255,0.18), 0 0 12px rgba(0,255,255,0.06) inset;
+  border-color: rgba(0,255,255,0.6);
+  transform: rotate(45deg) scale(1.05);
+}
+
+.rhombus-trails .thumb-arrow {
+  position: absolute;
+  /* 7px higher than before to sit more above the thumb */
+  bottom: 77px; /* 70 + 7 */
+  left: 0;
+  width: 14px;
+  height: 14px;
+  background: radial-gradient(circle at 50% 40%, rgba(0,255,255,0.95), rgba(0,200,200,0.6));
+  border-radius: 50%;
+  transform: translateX(0);
+  transition: transform 0.45s cubic-bezier(.2,.8,.2,1);
+  opacity: 0.8;
+  pointer-events: none;
+  filter: drop-shadow(0 0 8px rgba(0,255,255,0.35));
+}
+
+/* Autoplay toggle button next to the thumbnails */
+.rhombus-trails .autoplay-toggle {
+  margin-left: 0.6rem;
+  align-self: center;
+  background: rgba(0,0,0,0.5);
+  color: var(--text);
+  border: 1px solid rgba(255,255,255,0.06);
+  padding: 0.4rem 0.6rem;
+  border-radius: 0.5rem;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 1rem;
+  display: inline-flex;
+  gap: 0.5rem;
+  align-items: center;
+  cursor: pointer;
+  transition: background 0.18s ease, transform 0.12s ease;
+}
+.rhombus-trails .autoplay-toggle:hover {
+  background: rgba(0,255,255,0.06);
+}
+.rhombus-trails .autoplay-toggle:active {
+  transform: translateY(1px);
+}
+
+/* Slightly emphasize when autoplay is active */
+.rhombus-trails .autoplay-toggle[aria-pressed="true"] {
+  background: rgba(0,255,255,0.06);
+  border-color: rgba(0,255,255,0.12);
+}
+
+/* Larger bold label and scaled SVG */
+.rhombus-trails .autoplay-toggle svg {
+  width: 18px;
+  height: 18px;
+  fill: var(--primary);
+  flex: none;
+}
+.rhombus-trails .autoplay-toggle .autoplay-label {
+  font-size: 1.6rem; /* large, h1-like */
+  font-weight: 800;
+  line-height: 1;
+  color: var(--text);
+  font-family: 'Orbitron', sans-serif;
+}
+
+/* Art gallery styles */
+.art-gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.5rem;
+  padding: 2rem;
+  align-items: start;
+}
+
+.art-gallery .project-card {
+  width: 100%;
+  max-width: 360px; /* keeps cards a comfortable size while being responsive */
+  margin: 0 auto;
+}
+
+.art-gallery .project-card img {
+  height: 220px;
+  width: 100%;
+  object-fit: cover; /* crop/scale images consistently */
+  display: block;
+}
+
+.art-gallery .project-card h2 {
+  margin: 0.75rem 1rem 0.25rem;
+}
+
+.art-gallery .project-card p {
+  margin: 0 1rem 1rem;
+  font-size: 0.95rem;
+  opacity: 0.9;
+}
+
+/* Stacked alternating art list */
+.art-gallery {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+  padding: 2rem;
+}
+
+.art-item {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.art-item .art-image {
+  flex: 0 0 48%;
+}
+.art-item .art-image img {
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+  display: block;
+  box-shadow: 0 6px 24px rgba(0,0,0,0.6);
+}
+
+.art-item .art-text {
+  flex: 1 1 52%;
+  color: var(--text);
+}
+.art-item .art-text h2 {
+  margin-top: 0;
+  color: var(--primary);
+  font-family: 'Orbitron', sans-serif;
+}
+
+/* Alternate layout: even items reverse order */
+.art-item:nth-child(even) {
+  flex-direction: row-reverse;
+}
+
+/* On small screens, stack vertically and center content */
+@media (max-width: 820px) {
+  .art-item {
+    flex-direction: column;
+    text-align: center;
+  }
+  .art-item:nth-child(even) {
+    flex-direction: column;
+  }
+  .art-item .art-image, .art-item .art-text {
+    flex: none;
+    width: 100%;
+  }
+  .art-item .art-text {
+    padding: 0 1rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .art-gallery {
+    grid-template-columns: 1fr 1fr;
+    padding: 1rem;
+    gap: 1rem;
+  }
+  .art-gallery .project-card img {
+    height: 180px;
+  }
+}
+
+@media (max-width: 420px) {
+  .art-gallery {
+    grid-template-columns: 1fr;
+  }
+  .art-gallery .project-card img {
+    height: 160px;
+  }
+}
