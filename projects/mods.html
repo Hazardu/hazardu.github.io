@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Project 2: Mods</title>
+  <link rel="stylesheet" href="../style.css" />
+  <script defer src="../slides.js"></script>
+</head>
+<body class="project-page">
+  <header>
+    <nav><a href="../index.html">← Back</a></nav>
+    <h1>Modding Miscellany</h1>
+  </header>
+
+  <main class="slideshow" data-project="2">
+    
+    <div class="slide active" style="background-image: url('imgs/mods/slideVT.jpg')">
+      <div class="text-block">
+        <h2>When a mod needs a mod</h2>
+        <p>Not every project needs to span multiple years. Sometimes you see an opportunity to enhance something great and make it even better.</p>
+        <p>That was Warhammer: Vermintide 2's <em>Peregrinaje</em> mod—an ambitious overhaul of the Chaos Wastes game mode. Massive in scope. Beloved by the community. And full of potential for even deeper gameplay.</p>
+        <p>So I did what any reasonable person would do: I modded the mod.</p>
+      </div>
+    </div>
+
+    <div class="slide" style="background-image: url('imgs/mods/slidePereQOL.jpg')">
+      <div class="text-block">
+        <h2>Peregrinaje QoL and Rebalance</h2>
+        <p>The community had a wishlist. I delivered.</p>
+        <p><em>Peregrinaje</em> had its own approach to difficulty—waves of high-HP enemies with extended quiet periods. I saw an opportunity to add more tactical depth by integrating <strong>Dense Onslaught for Chaos Wastes</strong>, which reworked horde composition and timing to weave elite enemies throughout encounters. This made crowd control, positioning, and team synergy critical again.</p>
+        <p>Then I brought in <strong>Tourney Balance for Chaos Wastes</strong>—a community-driven rebalance project that addressed weapon performance gaps across the game's roster. <em>Peregrinaje</em> had rebalanced <i>some</i> weapons, but I wanted comprehensive coverage. Tourney Balance provided that while maintaining full compatibility with the base mod.</p>
+        <p>I also introduced new talent options, normalized power scaling, removed several annoying features from the original mod, fixed map exploits with invisible geometry where players could abuse lack of enemy pathfinding for all maps, and added over 100 new boons for build variety. The resulting patch became widely adopted in Peregrinaje's Discord, though not officially endorsed by the original mod author — a testament to listening to what players wanted and making it happen.</p>
+      </div>
+    </div>
+
+    <div class="slide" style="background-image: url('imgs/mods/slidefactorio.png')">
+      <div class="text-block">
+        <h2>Factorio: The joy of readable code</h2>
+        <p>Factorio modding was a breath of fresh air. No decompiling. No obfuscated assemblies. Just clean Lua with <i>developer commentary included</i>.</p>
+        <p>The <em>Space Age</em> expansion introduced quality tiers (common, uncommon, rare, epic, legendary) that basically turned the game into a slot machine—but only for vanilla buildings. I forked several mods to add quality scaling to modded structures and recipes that hadn't been touched yet.</p>
+        <p>My goal? Pure power fantasy. Building a ridiculously effective megabase with absurd throughput numbers. When your tools get out of the way, you can focus on making numbers go <i>brrrr</i>.</p>
+        <p>Factorio's openness made experimentation frictionless—this is what modding <i>should</i> feel like.</p>
+      </div>
+    </div>
+
+    <div class="slide" style="background-image: url('imgs/mods/slideLC.jpg')">
+      <div class="text-block">
+        <h2>Lethal Company: BepInEx archaeology</h2>
+        <p>Malcolm-Q made <strong>Lategame Upgrades</strong>, a cool progression system for Lethal Company. Another mod added reserved inventory slots (flashlight, walkie-talkie, weapons) with purchases scattered across a separate menu.</p>
+        <p>I merged them. My mod added a field to Lategame Upgrades that, when purchased sequentially, unlocked reserved slots for different item types—one unified interface instead of menu-hopping.</p>
+        <p>This was my introduction to BepInEx, and honestly? It's a far better modding framework than ModAPI. Better architecture, cleaner IL patching, more robust compatibility systems. Small project, big lessons—sometimes the best way to learn a tool is to just <i>use</i> it.</p>
+      </div>
+    </div>
+
+    <div class="slide" style="background-image: url('imgs/mods/slideConan.jpg')">
+      <div class="text-block">
+        <h2>Conan Exiles: My first Unreal rodeo</h2>
+        <p>My private Conan Exiles server was missing something important: late-game gambling.</p>
+        <p>I built a crafting system where players could enhance weapons, armor, and accessories using rare materials from boss raids. The classic dopamine loop—grind, gamble, repeat.</p>
+        <p>Conan's Dev Kit is basically a modified Unreal Engine 4 editor. Having worked extensively with Unity, I found it surprisingly straightforward—both engines share the same fundamental tools. Blueprint scripting, asset management, build pipelines—it all translated cleanly. Modern game engines have converged enough that switching between them is more about learning shortcuts than relearning concepts.</p>
+      </div>
+    </div>
+
+    <div class="rhombus-trails"></div>
+  </main>
+</body>
+</html>
