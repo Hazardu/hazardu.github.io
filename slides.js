@@ -23,12 +23,6 @@ document.addEventListener('DOMContentLoaded', () => {
     rhombusContainer.appendChild(thumb);
   });
 
-  // Create arrow indicator and position it above the active thumb
-  arrow = document.createElement('div');
-  arrow.className = 'thumb-arrow';
-  // arrow is purely decorative - pointer-events none
-  arrow.setAttribute('aria-hidden', 'true');
-  rhombusContainer.appendChild(arrow);
 
   // Create autoplay toggle button (shows pause/play and label)
   const autoplayBtn = document.createElement('button');
@@ -67,8 +61,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // Use setTimeout to allow layout to settle
   setTimeout(() => {
     window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
-    // position arrow after scroll/layout
-    positionArrow();
+    // position after scroll/layout
   }, 50);
 
   function showSlide(index) {
@@ -80,7 +73,6 @@ document.addEventListener('DOMContentLoaded', () => {
   current = index;
   slides[current].classList.add('active');
   thumbs[current].classList.add('active-thumb');
-  positionArrow();
   }
 
   function startAutoTransition() {
@@ -100,18 +92,6 @@ document.addEventListener('DOMContentLoaded', () => {
   updateAutoplayButton();
   }
 
-  function positionArrow() {
-    const thumbs = Array.from(rhombusContainer.querySelectorAll('.thumb'));
-    const active = thumbs[current];
-    if (!active || !arrow) return;
-    // compute center x of active thumb relative to container
-    const containerRect = rhombusContainer.getBoundingClientRect();
-    const thumbRect = active.getBoundingClientRect();
-    const offsetX = thumbRect.left + thumbRect.width / 2 - containerRect.left;
-  // place arrow centered above thumb with a smooth transform
-  // adjust by +1px to the right to match design request (subtracting half width ~7px then +1)
-  arrow.style.transform = `translateX(${offsetX - 9}px)`;
-  }
 
   // Start rotating automatically
   startAutoTransition();
