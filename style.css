@@ -127,10 +127,18 @@ h1 {
   box-shadow: 0 10px 20px rgba(0,255,255,0.12);
 }
 
-/* Hide images (you said remove background images) */
+/* show project images inside cards */
 .project-card img {
-  display: none;
+  display: block;
+  width: 80%;
+  height: 80%;
+  object-fit: cover;
+  border-radius: 12px;
+  margin: 0 0 0.9rem 0;
+  align-self: center; /* centers the img in the flex column */
+  box-shadow: 0 6px 18px rgba(0,0,0,0.6);
 }
+
 
 /* card-content contains title + paragraph (stacked tightly) */
 .card-content {
@@ -204,6 +212,10 @@ h1 {
   }
   .project-card {
     min-height: auto;
+  }
+  .project-card img {
+    width: auto;
+    height: auto;
   }
 }
 
